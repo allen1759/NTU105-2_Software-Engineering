@@ -1,0 +1,31 @@
+Mark bringUp
+Mark setUp
+markliu@gmail.com
+Mark selectProduct
+pizza 50 crustA toppingA
+salad dressingA
+breadstick
+drink
+Mark selectDeliveryMechanism
+pickUp
+Mark selectDeliveryTime
+18:02
+Tony bringUp
+Tony setUp
+tony@ntu.edu.tw
+Tony selectProduct
+pizza 40 crustB toppingB toppingC
+drink
+salad dressingB
+Mark pay
+Mark exit
+listPaidOrders
+listAccounts
+Tony selectDeliveryMechanism
+delivered
+Tony selectDeliveryTime
+5:00
+Tony pay
+Tony exit
+listPaidOrders
+listAccounts
