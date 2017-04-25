@@ -4,10 +4,10 @@ import java.io.IOException;
 
 public abstract class AnalogDevice {
 	
-	public float  lowerRange, upperRange;
-	public String name, dataSetFilename;
-	public FileReader fd;
-	public BufferedReader reader;
+	protected float lowerRange, upperRange;
+	protected String name, dataSetFilename;
+	protected FileReader fd;
+	protected BufferedReader reader;
 
 	// constructor
 	public AnalogDevice(String name, String dataSetFilename, String lowRange, String upRange) {
@@ -25,7 +25,6 @@ public abstract class AnalogDevice {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
-
 	}
 
 	// when called to do measure(), go to read dataSetFile
@@ -41,12 +40,23 @@ public abstract class AnalogDevice {
 				measurement = Float.parseFloat(line);
 			else
 				measurement = -1;
-
 		}catch (IOException e){
 			e.printStackTrace();
 		}
 
 		return measurement;
+	}
+
+	public String getDeviceName() {
+		return name;
+	}
+	
+	public float getLowerRange() {
+		return lowerRange;
+	}
+	
+	public float getUpperRange() {
+		return upperRange;
 	}
 
 	public abstract String getCategoryName();

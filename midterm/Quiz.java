@@ -36,6 +36,7 @@ public class Quiz {
 		Program program = new Program(monitor_period, patients);
 		program.monitor();
 
+		reader.close();
 	}
 
 }

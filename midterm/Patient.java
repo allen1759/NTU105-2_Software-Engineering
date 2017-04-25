@@ -1,13 +1,14 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class Patient {
 	private String name;
 	private Integer frequency;
-	private List<AnalogDevice> analogDevices = new LinkedList<AnalogDevice>();
+	private ArrayList<AnalogDevice> analogDevices;
 	
-	public Patient(String[] words, String[] lines){
+	public Patient(String[] words){
 		this.name = words[1];
 		this.frequency = Integer.parseInt(words[2]);
+		this.analogDevices = new ArrayList<AnalogDevice>();
 	}
 
 	public String getName(){
@@ -40,14 +41,9 @@ public class Patient {
 		analogDevices.add(analogDevice);
 		return true;
 	}
-
-	public List<DeviceMeasurement> getFactors(){
-		List<DeviceMeasurement> res = new LinkedList<DeviceMeasurement>();
-		for (int i=0;i<analogDevices.size();++i){
-			AnalogDevice analogDevice = analogDevices.get(i);
-			DeviceMeasurement deviceMeasurement = new DeviceMeasurement(analogDevice.getCategoryName(), analogDevice.name, analogDevice.measure(), analogDevice.lowerRange, analogDevice.upperRange);
-			res.add(deviceMeasurement);
-		}
-		return res;
+	
+	public ArrayList<AnalogDevice> getDeviceList() {
+		return analogDevices;
 	}
+
 }

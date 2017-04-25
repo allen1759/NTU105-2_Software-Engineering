@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import Patient.DeviceMeasurement;
 
 public class Program {
 
@@ -11,28 +10,38 @@ public class Program {
 		this.monitor_period = monitor_period;
 		this.patients = patients;
 		this.database = new Database();
-		this.nurseStation = new NurseStation();
+	}
+	
+	public DeviceMeasurement readFactor(AnalogDevice device) {
+		return new DeviceMeasurement(device.getCategoryName(), device.getDeviceName(), device.measure(), device.getLowerRange(), device.getUpperRange());
 	}
 	
 	public void monitor() {
 		for(int timer=0; timer<=monitor_period; timer+=1) {
 			for(Patient patient : patients) {
 				if(timer % patient.getFrequency() == 0) {
-					DeviceMeasurement deviceMeasurement = patient.getFactor();
-					storeDB(patient, deviceMeasurement, timer);
+					ArrayList<AnalogDevice> deviceList = patient.getDeviceList();
+					for(AnalogDevice device : deviceList) {
+						DeviceMeasurement deviceMeasurement = readFactor(device);
+						storeDB(patient.getName(), deviceMeasurement, timer);
+						compareRange(patient.getName(), deviceMeasurement, timer);
+					}
 				}
 			}
 		}
 		database.display();
 	}
 	
-	public void storeDB(Patient patient, DeviceMeasurement deviceMeasurement, int currentTime) {
-		database.insert(patient.getName(), deviceMeasurement.getDeviceCategory() + " " + deviceMeasurement.getDeviceName(), currentTime, deviceMeasurement.getmeasurementValue());
+	public void storeDB(String patientName, DeviceMeasurement deviceMeasurement, int currentTime) {
+		database.insert(patientName, deviceMeasurement.getDeviceCategory() + " " + deviceMeasurement.getDeviceName(), currentTime, deviceMeasurement.getmeasurementValue());
 	}
 	
-	public boolean compareRange(Patient patient, DeviceMeasurement devideMeasurement, int currentTime) {
-		if(true) {
-			NurseStation.displayPatientDanger(currentTime, patientName, sensorName, value);
+	public void compareRange(String patientName, DeviceMeasurement deviceMeasurement, int currentTime) {
+		if(deviceMeasurement.getmeasurementValue()==-1) {
+			NurseStation.displayDevFall(currentTime, deviceMeasurement.getDeviceName());
+		}
+		else if(!deviceMeasurement.isSafeRange()) {
+			NurseStation.displayPatientDanger(currentTime, patientName, deviceMeasurement.getDeviceName(), deviceMeasurement.getmeasurementValue());
 		}
 	}
 	
