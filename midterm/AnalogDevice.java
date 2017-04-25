@@ -49,5 +49,7 @@ public abstract class AnalogDevice {
 		return measurement;
 	}
 
+	public abstract String getCategoryName();
+
 }
 
