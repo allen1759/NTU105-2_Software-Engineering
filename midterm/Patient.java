@@ -9,6 +9,35 @@ public class Patient {
 		this.name = words[1];
 		this.frequency = Integer.parseInt(words[2]);
 	}
+
+	public class DeviceMeasurement{
+		private String deviceCategory;
+		private String deviceName;
+		private Float measurementValue;
+
+
+		public DeviceMeasurement(String deviceCategory, String deviceName, Float measurementValue){
+			this.deviceCategory = deviceCategory;
+			this.deviceName = deviceName;
+			this.measurementValue = measurementValue;
+		}
+
+		public String getDeviceCategory(){
+			return deviceCategory;
+		}
+
+		public String getDeviceName(){
+			return deviceName;
+		}
+
+		public Float getmeasurementValue(){
+			return measurementValue;
+		}
+	}
+
+	public void getName(){
+		return this.name;
+	}
 	
 	public Boolean attachAnalogDevice(String[] deviceInformation){
 
@@ -33,7 +62,12 @@ public class Patient {
 		return true;
 	}
 
-	public List< Pair<String, Float> > getFactors(){
-		
+	public List<DeviceMeasurement> getFactors(){
+		List<DeviceMeasurement> res = new LinkedList<DeviceMeasurement>();
+		for (int i=0;i<analogDevices.size();++i){
+			DeviceMeasurement deviceMeasurement = new DeviceMeasurement(analogDevice.getCategoryName(), analogDevice.name, analogDevice.measure());
+			res.add(deviceMeasurement);
+		}
+		return res;
 	}
 }
