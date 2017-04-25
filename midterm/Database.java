@@ -29,11 +29,11 @@ public class Database{
 	}
 
 	public void display(){
-		for(String patientName: inputOrder){
+		for(String patientName: patientOrder){
 			System.out.println("patient "+patientName);
 			for(String deviceName: deviceOrder){
 				System.out.println(deviceName);
-				for(ArrayList<Record> record: patientRecord.get(patientName).get(deviceName)){
+				for(Record record: patientRecord.get(patientName).get(deviceName)){
 					System.out.println("["+record.time+"] "+record.value);
 				}
 			}
