@@ -10,33 +10,8 @@ public class Patient {
 		this.frequency = Integer.parseInt(words[2]);
 	}
 
-	public class DeviceMeasurement{
-		private String deviceCategory;
-		private String deviceName;
-		private Float measurementValue;
-
-
-		public DeviceMeasurement(String deviceCategory, String deviceName, Float measurementValue){
-			this.deviceCategory = deviceCategory;
-			this.deviceName = deviceName;
-			this.measurementValue = measurementValue;
-		}
-
-		public String getDeviceCategory(){
-			return deviceCategory;
-		}
-
-		public String getDeviceName(){
-			return deviceName;
-		}
-
-		public Float getmeasurementValue(){
-			return measurementValue;
-		}
-	}
-
-	public void getName(){
-		return this.name;
+	public String getName(){
+		return name;
 	}
 	
 	public Boolean attachAnalogDevice(String[] deviceInformation){
@@ -65,9 +40,35 @@ public class Patient {
 	public List<DeviceMeasurement> getFactors(){
 		List<DeviceMeasurement> res = new LinkedList<DeviceMeasurement>();
 		for (int i=0;i<analogDevices.size();++i){
+			AnalogDevice analogDevice = analogDevices.get(i);
 			DeviceMeasurement deviceMeasurement = new DeviceMeasurement(analogDevice.getCategoryName(), analogDevice.name, analogDevice.measure());
 			res.add(deviceMeasurement);
 		}
 		return res;
+	}
+
+	public class DeviceMeasurement{
+		private String deviceCategory;
+		private String deviceName;
+		private Float measurementValue;
+
+
+		public DeviceMeasurement(String deviceCategory, String deviceName, Float measurementValue){
+			this.deviceCategory = deviceCategory;
+			this.deviceName = deviceName;
+			this.measurementValue = measurementValue;
+		}
+
+		public String getDeviceCategory(){
+			return deviceCategory;
+		}
+
+		public String getDeviceName(){
+			return deviceName;
+		}
+
+		public Float getmeasurementValue(){
+			return measurementValue;
+		}
 	}
 }
