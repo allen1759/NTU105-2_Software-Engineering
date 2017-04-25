@@ -3,12 +3,12 @@ import java.util.*;
 public class Database{
 
 	public List<String> patientOrder;
-	public List<String> deviceOrder;
+	public Map<String, ArrayList<String>> deviceOrder;
 	public HashMap<String, HashMap<String, ArrayList<Record>>> patientRecord;
 
 	Database(){
 		patientOrder = new ArrayList<String>();
-		deviceOrder = new ArrayList<String>();
+		deviceOrder = new HashMap<String, ArrayList<String>>();
 		patientRecord = new HashMap<String, HashMap<String, ArrayList<Record>>>();
 	}
 
@@ -17,10 +17,12 @@ public class Database{
 			patientOrder.add(patientName);
 			HashMap<String, ArrayList<Record>> recordList = new HashMap<String, ArrayList<Record>>();
 			patientRecord.put(patientName, recordList);
+			ArrayList<String> deviceList = new ArrayList<String>();
+			deviceOrder.put(patientName, deviceList);
 		}
 		if(!patientRecord.get(patientName).containsKey(deviceName)){
 			ArrayList<Record> record = new ArrayList<Record>();
-			deviceOrder.add(deviceName);
+			deviceOrder.get(patientName).add(deviceName);
 			patientRecord.get(patientName).put(deviceName, record);
 		}
 
@@ -31,10 +33,10 @@ public class Database{
 	public void display(){
 		for(String patientName: patientOrder){
 			System.out.println("patient "+patientName);
-			for(String deviceName: deviceOrder){
+			for(String deviceName: deviceOrder.get(patientName)){
 				System.out.println(deviceName);
 				for(Record record: patientRecord.get(patientName).get(deviceName)){
-					System.out.println("["+record.time+"] "+record.value);
+					System.out.println("["+record.time+"] "+String.format("%.1f", record.value));
 				}
 			}
 		}
