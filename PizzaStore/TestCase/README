@@ -1,0 +1,18 @@
+testcase1:
+	basic operation
+testcase2:
+	correct dealing with account for second times
+testcase3:
+	more than one customer
+testcase4:
+	favorite pizza only show once for the same pizza
+testcase5:
+	has account but no favorite pizza
+testcase6:
+	the order of select can change
+testcase7:
+	more than one selectProduct in an order
+testcase8:
+	more than one selectDeliveryMechanism or selectDeliveryTime in an order
+testcase9:
+	a new customer order before last customer exit
