@@ -16,13 +16,13 @@ public class Patient {
 		AnalogDevice analogDevice;
 		
 		if (deviceCategory.equals("PulseSensor")){
-			analogDevice = new PulseSensor(dI[1], dI[2], dI[3], dI[4]);
+			analogDevice = new PulseSensor(deviceInformation[1], deviceInformation[2], deviceInformation[3], deviceInformation[4]);
 		}
 		else if (deviceCategory.equals("BloodPressureSensor")){
-			analogDevice = new BloodPressureSensor(dI[1], dI[2], dI[3], dI[4]);
+			analogDevice = new BloodPressureSensor(deviceInformation[1], deviceInformation[2], deviceInformation[3], deviceInformation[4]);
 		}
 		else if (deviceCategory.equals("TemperatureSensor")){
-			analogDevice = new TemperatureSensor(dI[1], dI[2], dI[3], dI[4]);
+			analogDevice = new TemperatureSensor(deviceInformation[1], deviceInformation[2], deviceInformation[3], deviceInformation[4]);
 		}
 		else{
 			System.out.println("invalid device type");
@@ -31,5 +31,9 @@ public class Patient {
 		
 		analogDevices.add(analogDevice);
 		return true;
+	}
+
+	public List< Pair<String, Float> > getFactors(){
+		
 	}
 }
