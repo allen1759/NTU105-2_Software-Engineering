@@ -45,7 +45,7 @@ public class Patient {
 		List<DeviceMeasurement> res = new LinkedList<DeviceMeasurement>();
 		for (int i=0;i<analogDevices.size();++i){
 			AnalogDevice analogDevice = analogDevices.get(i);
-			DeviceMeasurement deviceMeasurement = new DeviceMeasurement(analogDevice.getCategoryName(), analogDevice.name, analogDevice.measure());
+			DeviceMeasurement deviceMeasurement = new DeviceMeasurement(analogDevice.getCategoryName(), analogDevice.name, analogDevice.measure(), analogDevice.lowerRange, analogDevice.upperRange);
 			res.add(deviceMeasurement);
 		}
 		return res;
