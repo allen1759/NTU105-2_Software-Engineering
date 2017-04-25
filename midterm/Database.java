@@ -36,7 +36,8 @@ public class Database{
 			for(String deviceName: deviceOrder.get(patientName)){
 				System.out.println(deviceName);
 				for(Record record: patientRecord.get(patientName).get(deviceName)){
-					System.out.println("["+record.time+"] "+String.format("%.1f", record.value));
+					System.out.print("["+record.time+"] ");
+					System.out.println("%.1f", record.value);
 				}
 			}
 		}
