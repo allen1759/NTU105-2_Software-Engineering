@@ -1,0 +1,15 @@
+Create Cheese
+RemoveUnpopularPizza Cheese
+Create Cheese
+AddNewFlavorPizza Cheese
+Create Cheese
+Create Pepperoni
+RemoveUnpopularPizza Pepperoni
+Create Pepperoni
+AddNewFlavorPizza Pepperoni
+Create Pepperoni
+Create Greek
+RemoveUnpopularPizza Pepperoni
+Create Greek
+AddNewFlavorPizza Greek
+Create Greek
