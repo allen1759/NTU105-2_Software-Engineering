@@ -1,0 +1,32 @@
+Mark bringUp
+Mark setUp
+markliu@gmail.com
+Mark selectProduct
+pizza 50 crustA toppingA
+salad dressingA
+breadstick
+drink
+Mark selectDeliveryTime
+8:59
+Mark selectDeliveryMechanism
+pickUp
+Mark selectDeliveryTime
+18:02
+Mark pay
+Mark exit
+listPaidOrders
+listAccounts
+Mark bringUp
+Mark selectProduct
+pizza 40 crustB toppingB
+salad
+Mark selectDeliveryMechanism
+delivered
+Mark selectDeliveryTime
+5:49
+Mark selectDeliveryMechanism
+pickUp
+Mark pay
+Mark exit
+listPaidOrders
+listAccounts
